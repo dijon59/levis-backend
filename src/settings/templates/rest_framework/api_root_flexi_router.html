@@ -1,0 +1,31 @@
+{% extends "rest_framework/api.html" %}
+{% load static rest_framework api_templates %}
+
+{% block breadcrumbs %}
+<div style="clear: both; margin:25px"><br></div>
+{% endblock %}
+
+{% block content %}
+<div class="response-info well" style="margin-top:10px">
+  <table style="width:100%">
+      <tr>
+          <th>Name</th>
+          <th>URL</th>
+      </tr>
+      {% for module_name,apis in modules.items %}
+          {% if module_name %}
+          <tr class="apiGroup"><th>{{ module_name }}</th></tr>
+          {% endif %}
+          {% for api_name,api_url in apis.items %}
+          <tr>
+              <td>{{ api_name }}</td>
+              <td><a href="{% url_path api_url %}{% authparams %}">{% url_path api_url %}</a></td>
+          </tr>
+          {% endfor %}
+      {% endfor %}
+  </table>
+</div>
+<style>
+    .apiGroup th { padding-top: 8px }
+</style>
+{% endblock %}

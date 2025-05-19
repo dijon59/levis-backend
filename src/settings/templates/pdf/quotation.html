@@ -1,0 +1,257 @@
+{% load static custom_filters %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Levi and Son Investment - Quotation</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 10px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .logo {
+            width: 750px;
+            height: 150px;
+            margin-right: 20px;
+        }
+
+        .company-name {
+            flex-grow: 1;
+        }
+
+        .company-name h1 {
+            margin: 0;
+            font-size: 28px;
+            text-transform: uppercase;
+        }
+
+        .company-name h1 span {
+            color: #3030AA;
+        }
+
+        .company-name h2 {
+            margin: 5px 0 0 0;
+            font-size: 16px;
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+
+        .company-services {
+            font-size: 11px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .registration-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #4285f4;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 0 0 0 10px;
+            font-size: 12px;
+        }
+
+        .info-section {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            flex: 1;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .quotation-info {
+            flex: 1;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .contact-info div,
+        .quotation-info div {
+            margin-bottom: 5px;
+        }
+
+        .label {
+            font-weight: bold;
+            width: 120px;
+            display: inline-block;
+        }
+
+        .customer-info {
+            margin-bottom: 20px;
+        }
+
+        .customer-info h3 {
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background-color: #8a8a8a;
+            color: white;
+            text-align: left;
+            padding: 8px;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .labor-description {
+            font-size: 13px;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .totals-table {
+            width: 40%;
+            margin-left: auto;
+        }
+
+        .totals-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .grand-total {
+            background-color: #8a8a8a;
+            color: white;
+            font-weight: bold;
+        }
+
+        .payment-info {
+            margin-top: 30px;
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+        }
+
+        .payment-info h3 {
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .bank-details {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="https://levi-and-son.s3.amazonaws.com/uploads/payslip/IMG-20250220-WA0002_1.jpg"
+            alt="Levi & Son Logo" class="logo">
+    </div>
+
+    <div class="info-section">
+        <div class="contact-info">
+            <div><span class="label">EMAIL</span> info@leviandsoninvestment.co.za</div>
+            <div><span class="label">CELL NO/</span> 0749127858</div>
+            <div><span class="label"></span> 0672103821</div>
+            <div style="margin-top: 10px;">28 DARTFORD ROAD PARKLANDS CAPE TOWN</div>
+            <div>WESTERN CAPE 7441</div>
+        </div>
+        <div class="quotation-info">
+            <div><span class="label">QUOTATION NUMBER #</span> {{ id }}</div>
+            <div><span class="label">DATE</span> {{ date }}</div>
+            <div><span class="label">Registration</span> 2022/723795/07</div>
+            <div><span class="label">TAX Number</span> 9059143298</div>
+        </div>
+    </div>
+
+    <div class="customer-info">
+        <h3>TO</h3>
+        <div>{{ name }}</div>
+        <div>{{ email }}</div>
+        <div>CELL: {{ contact_number }}</div>
+        <div>{{ address }}</div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="background-color: #002f67 !important;">QTY</th>
+                <th style="background-color: #002f67 !important;">DESCRIPTION</th>
+                <th style="background-color: #002f67 !important;">PRICE</th>
+                <th style="background-color: #002f67 !important;">TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in info %}
+            <tr>
+                <td>{{ i.unit }}</td>
+                <td>{{ i.description }}</td>
+                <td>R{{ i.amount }}</td>
+                <td>R{{  i.unit|multiply:i.amount }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <table class="totals-table">
+        <tr>
+            <td>DEPOSIT</td>
+            <td>70%</td>
+            <td>R{{ deposit }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>30%</td>
+            <td>R{{ remaining }}</td>
+        </tr>
+        <tr class="grand-total" style="background-color: #002f67 !important;">
+            <td colspan="2">GRAND TOTAL</td>
+            <td>{{ deposit|add:remaining }}</td>
+        </tr>
+    </table>
+
+    <div class="payment-info">
+        <h3>Please make your payments in the following account</h3>
+        <div class="bank-details">
+            <div>ACCOUNT HOLDER: LEVI AND SON INVESTMENT</div>
+            <div>ACCOUNT NUMBER: 63142902120</div>
+            <div>BANK NAME: FNB</div>
+        </div>
+    </div>
+
+    <div class="payment-info">
+        <h3>Terms and conditions</h3>
+        <strong>NB, Please when the quote is approved, 70 % deposit need to be paid in our business account for the
+            coverage of all materials, and this quote is valid within the period of 14 days.</strong>
+    </div>
+</body>
+</html>

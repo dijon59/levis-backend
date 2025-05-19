@@ -1,0 +1,27 @@
+{% extends "rest_framework/base.html" %}
+{% load rest_framework api_templates %}
+
+{% block style %}
+    {{ block.super }}
+    <style>
+    /** fix filter modal form input styles */
+    .modal-body label {width: 180px}
+    .modal-body select, .modal-body input {width: 280px}
+    .modal-body .helptext {display: none}
+    </style>
+{% endblock %}
+
+{% block branding %}{% endblock %}
+
+{% block breadcrumbs %}
+<ul class="breadcrumb">
+    {% for breadcrumb_name, breadcrumb_url in breadcrumblist %}
+    <li>
+        <a href="{{ breadcrumb_url }}{% authparams %}"
+           class="{% if forloop.last %}active{% endif %}">
+            {{ breadcrumb_name }}</a>
+        {% if not forloop.last %}<span class="divider"></span>{% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

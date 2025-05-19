@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet">
+</link>
+
+<body style="background-color: #f1f1f1;">
+
+    <div style="background-color: rgb(22, 22, 84);; padding: 25px; margin-bottom: 20px">
+        <p style="color: white; font-family: Arial; font-size: 20px; font-weight: bold">LEVI AND SON INVESTMENT</p>
+    </div>
+
+    <table style="font-family: Arial, Helvetica, sans-serif; width: 100%; max-width: 600px;
+            padding: 20px; margin: auto;  color: #3F3F3F;
+            border: 1px solid #e8e8e8; background: #fff;">
+        <tbody>
+            <tr>
+                <td style="padding: 20px;">
+                    <p style="font-size: 20px; color: black">Hi <strong>{{ customer_name }}</strong></p>
+                    <p>I hope this message finds you well.</p>
+                    
+                    <p>This email serves as a follow up on the quotation(<strong>{{ quotation_number }}</strong> ) sent
+                        to you. Please advise whether you are still interested.</p>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 20px;">
+                    <p>Kind regards,</p>
+                    <p>Levi and Son investment team</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
