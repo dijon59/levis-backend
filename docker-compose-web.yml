@@ -11,7 +11,7 @@ services:
 
     environment:
       - DJANGO_SETTINGS_MODULE=src.settings.settings
-      - SECRET_KEY=django-insecure-e#uxa^y0#8ac3ol%j4=5=&0&-qa7luv9he@le1adg%uc@@pl3$
+      - SECRET_KEY=private_key
       - ALLOWED_HOSTS=api.leviandsoninvestment.co.za
       - VIRTUAL_HOST=api.leviandsoninvestment.co.za
       - DB_NAME=electric_db
@@ -21,8 +21,8 @@ services:
       - DEBUG=0
       - BASE_URL=https://api.leviandsoninvestment.co.za
       - LETSENCRYPT_HOST=api.leviandsoninvestment.co.za
-      - AWS_ACCESS_KEY_ID=AKIA3TD2SLR7AY6P6BMU
-      - AWS_SECRET_ACCESS_KEY=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
+      - AWS_ACCESS_KEY_ID=private_key
+      - AWS_SECRET_ACCESS_KEY=private_key
       - AWS_REGION_NAME=us-east-1
       - AWS_S3_BUCKET=levi-and-son
       - SENTRY_DSN=https://2e340bfda12e5cd97a365d98f381db01@o4505142231433216.ingest.us.sentry.io/4509167501770752
