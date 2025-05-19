@@ -224,8 +224,8 @@ SIMPLE_JWT = {
 # -----------------------------------------------------------------------------
 
 # ACCESS KEYS
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', 'AKIA3TD2SLR7AY6P6BMU')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', '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')
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 AWS_REGION_NAME = os.getenv('AWS_REGION_NAME', 'us-east-1')
 
 if not DEBUG:
