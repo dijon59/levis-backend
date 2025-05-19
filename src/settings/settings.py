@@ -233,11 +233,11 @@ if not DEBUG:
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
-    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'info@leviandsoninvestment.co.za')
-    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'jvsbtdfnfzqwelzx')
+    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'test@test.com')
+    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
 
 
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'info@leviandsoninvestment.co.za')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'test@test.com')
 
 AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_S3_BUCKET', 'levi-and-son')
 AWS_S3_ADDRESSING_STYLE = 'virtual'
