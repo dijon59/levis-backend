@@ -3,7 +3,7 @@ Follow the following steps:
 
 * Make sure that you are using python3, and have a virtual environment running python3. 
 
-* in order to create a virtual environment, type in the following command: `virtualenv (yourvirtualenvname)`
+* in order to create a virtual environment, type in the following command: `virtualenv (yourvirtualenvname)` or `python3 -m venv venv`
 
 * use the following command to access your virtual environment: `source (yourvirtualenvname)/bin/activate`
 

@@ -239,7 +239,7 @@ if not DEBUG:
 
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'test@test.com')
 
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_S3_BUCKET', 'levi-and-son')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_S3_BUCKET')
 AWS_S3_ADDRESSING_STYLE = 'virtual'
 AWS_S3_FILE_OVERWRITE = False
 AWS_LOCATION = 'uploads'
@@ -276,7 +276,7 @@ FCM_CREDENTIALS.refresh(Request())
 FCM_ACCESS_TOKEN = FCM_CREDENTIALS.token
 
 # Set your project ID
-PROJECT_ID = 'test-mobile-app-74c60'
+PROJECT_ID = os.getenv('PROJECT_ID', 'test_app')
 
 # Firebase Messaging endpoint
 FCM_URL = f"https://fcm.googleapis.com/v1/projects/{PROJECT_ID}/messages:send"
